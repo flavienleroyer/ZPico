@@ -15,7 +15,7 @@ pub fn build(b: *std.Build) void {
     CPico.installHeader("c/picohttpparser.h", "picohttpparser.h");
     CPico.linkLibC();
 
-    const ZPico = b.createModule(.{ .root_source_file = .{ .path = "src/ZPico.zig" }, .target = target, .optimize = optimize });
+    const ZPico = b.addModule(.{ .root_source_file = .{ .path = "src/ZPico.zig" }, .target = target, .optimize = optimize });
     ZPico.linkLibrary(CPico);
 
     const UnitTests = b.addTest(.{
